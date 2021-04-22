@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>651</width>
+    <height>447</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QTreeWidget" name="treeWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>161</width>
+     <height>441</height>
+    </rect>
+   </property>
+   <column>
+    <property name="text">
+     <string>参数类型</string>
+    </property>
+   </column>
+   <item>
+    <property name="text">
+     <string>4G</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>规划类参数</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>关键参数</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>PCI混淆</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>功率和工控</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>切换重选</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>异频频点</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>外部小区</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>邻接关系</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>邻区一致性</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>X2</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>锚点关键参数</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>锚点优选</string>
+     </property>
+    </item>
+   </item>
+   <item>
+    <property name="text">
+     <string>5G</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>规划类参数</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>PCI混淆</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>关键参数</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>邻区一致性</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>XN</string>
+     </property>
+    </item>
+   </item>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+ <slots>
+  <slot>button_click()</slot>
+ </slots>
+</ui>

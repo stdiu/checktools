@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>zhongxing</class>
+ <widget class="QWidget" name="zhongxing">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>710</width>
+    <height>558</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>ZX</string>
+  </property>
+  <property name="layoutDirection">
+   <enum>Qt::LeftToRight</enum>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <item>
+    <widget class="QWidget" name="widget_display" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>200</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QTreeWidget" name="treeWidget">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>200</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <column>
+         <property name="text">
+          <string>参数类型</string>
+         </property>
+        </column>
+        <item>
+         <property name="text">
+          <string>4G</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>LTE规划类参数</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>LTE关键参数</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>LTEPCI混淆</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>LTE功率和工控</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>LTE切换重选</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>LTE异频频点</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>LTE外部小区</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>LTE邻接关系</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>LTE邻区一致性</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>LTEX2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>LTE锚点关键参数</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>LTE锚点优选</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>5G</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>规划类参数</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>PCI混淆</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>关键参数</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>邻区一致性</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>XN</string>
+          </property>
+         </item>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QMdiArea" name="mdiArea"/>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+ <slots>
+  <slot>button_click()</slot>
+ </slots>
+</ui>
