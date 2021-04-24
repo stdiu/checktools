@@ -1,6 +1,8 @@
 import sys
 import os
-from PyQt5.QtWidgets import QApplication, QMainWindow, QAction, qApp, QMenu
+from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget
+from PyQt5.QtWidgets import QAction, qApp, QMenu, QPushButton, QLabel, QTreeWidget
+from PyQt5.QtWidgets import QVBoxLayout, QHBoxLayout, QGridLayout
 from PyQt5.QtGui import QIcon
 from PyQt5.uic import loadUi
 from HUAWEI import HUAWEI
@@ -32,7 +34,7 @@ class test_main(QMainWindow):
 
         huaweiAct = QAction(QIcon(r'../Icon/华为.png'), '华为 (&W)', self)
         huaweiAct.setStatusTip('华为参数核查')
-        huaweiAct.triggered.connect(lambda :HUAWEI.Huaweicheck())
+        huaweiAct.triggered.connect(lambda :HUAWEI.Huaweicheck(self))
 
         # *********************************  菜单栏  *********************************** #
         menubar = self.menuBar()
@@ -52,6 +54,47 @@ class test_main(QMainWindow):
         # 文件子菜单
         saveas = QMenu('保存为(&S)', self)
         fileMenu.addMenu(saveas)
+
+        # *********************************  设置一个中心布局  *********************************** #
+        widget = QWidget()
+        mianLayout = QHBoxLayout()
+        self.setCentralWidget(widget)
+        widget.setLayout(mianLayout)
+
+        # 左布局
+        leftlayout = QVBoxLayout()
+        treewidget = QTreeWidget()
+        leftlayout.addWidget(treewidget)
+
+        # 右布局
+        rightlayout = QVBoxLayout()
+        # 右上布局
+        rightUplayout = QVBoxLayout()
+        lab1 =QLabel('标签1')
+        lab2 =QLabel('标签2')
+        lab3 =QLabel('标签3')
+        rightUplayout.addWidget(lab1)
+        rightUplayout.addWidget(lab2)
+        rightUplayout.addWidget(lab3)
+
+        # 右下布局
+        rightDownlayout = QHBoxLayout()
+        bt1 = QPushButton("按钮1")
+        bt2 = QPushButton("按钮2")
+        bt3 = QPushButton("按钮3")
+        rightDownlayout.addWidget(bt1)
+        rightDownlayout.addWidget(bt2)
+        rightDownlayout.addWidget(bt3)
+
+
+        # 右边添加布局
+        rightlayout.addLayout(rightUplayout)
+        rightlayout.addLayout(rightDownlayout)
+
+        # 添加总布局
+        mianLayout.addLayout(leftlayout)
+        mianLayout.addLayout(rightlayout)
+
 
     # *********************************  右键菜单  *********************************** #
     def contextMenuEvent(self, event):
