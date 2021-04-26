@@ -1,12 +1,26 @@
 import sys
 import os
-from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QAction, qApp, QMenu
+from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QAction, qApp, QMenu, QStackedWidget
 from PyQt5.QtWidgets import QGridLayout, QHBoxLayout, QVBoxLayout
 from PyQt5.QtWidgets import QPushButton, QLabel
 from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.uic import loadUi
 from HUAWEI import HUAWEI
 from ZTE import ZET
+from SEQ import SEQ
+from home_ui import home
+
+
+class SEQ_UI(QWidget, SEQ):
+    def __init__(self):
+        super(SEQ_UI, self).__init__()
+        self.setupUi(self)
+        print('SEQ实例化')
+
+# class home_UI(QWidget, home):
+#     def __init__(self):
+#         super(home_UI, self).__init__()
+#         print('home实例化')
 
 class test_main(QMainWindow):
     def __init__(self):
@@ -24,7 +38,8 @@ class test_main(QMainWindow):
         # 文件子菜单
         backAct = QAction(QIcon(r'../Icon/主页.png'), '主页', self)
         backAct.setStatusTip('返回主页')
-        backAct.triggered.connect(lambda :self.mainwidget())
+        backAct.setObjectName('backAct')
+        backAct.triggered.connect(self.switch)
 
         exitAct = QAction(QIcon(r'../Icon./退出.png'), '退出（&E）', self)
         exitAct.setShortcut('Ctrl+Q')
@@ -41,6 +56,12 @@ class test_main(QMainWindow):
         huaweiAct.setStatusTip('华为参数核查')
         huaweiAct.triggered.connect(lambda: HUAWEI.initUI(self))
 
+        # 工具子菜单栏
+        seqAct = QAction(QIcon(r'../Icon/SEQ.png'),'SEQ话单分析', self)
+        seqAct.setText('SEQ话单统计')
+        seqAct.setObjectName('seqAct')
+        seqAct.triggered.connect(self.switch)
+
 
         # *********************************  菜单栏  *********************************** #
         menubar = self.menuBar()
@@ -55,6 +76,7 @@ class test_main(QMainWindow):
         checkMenu.addAction(huaweiAct)
         # 工具
         toolMenu = menubar.addMenu('工具(&T)')
+        toolMenu.addAction(seqAct)
         # 视图
         visualMenu = menubar.addMenu('视图(&V)')
         # 帮助
@@ -68,21 +90,21 @@ class test_main(QMainWindow):
         toolbar.addAction(backAct)
         toolbar.addAction(zteAct)
         toolbar.addAction(huaweiAct)
+        toolbar.addAction(seqAct)
         toolbar.addAction(exitAct)
 
-        self.mainwidget()  # 默认加载主页
+        # 实例化一个QStackedWidget
+        self.mainwidget = QStackedWidget()
+        self.setCentralWidget(self.mainwidget)
 
-    # *********************************  主界面  *********************************** #
-    def mainwidget(self):
-        mainwidget = QWidget()
-        gridlayout = QGridLayout()
-        pb1 = QPushButton('主界面按钮', self)
-        lab1 = QLabel("主页lab", self)
-        lab1.setPixmap(QPixmap(r'../Icon/中国电信.png'))
-        gridlayout.addWidget(lab1)
-        gridlayout.addWidget(pb1)
-        mainwidget.setLayout(gridlayout)
-        self.setCentralWidget(mainwidget)
+        # 实例化分页面
+        self.home = home()
+        self.SEQ = SEQ_UI()
+
+        # 将界面加入布局中
+        self.mainwidget.addWidget(self.SEQ)
+        self.mainwidget.addWidget(self.home)
+
 
     # *********************************  右键菜单  *********************************** #
     def contextMenuEvent(self, event):
@@ -91,6 +113,22 @@ class test_main(QMainWindow):
         action = cmenu.exec_(self.mapToGlobal(event.pos()))
         if action == newAct:
             print('右键新建')
+
+    # *********************************  点击轮询函数  *********************************** #
+    def switch(self):
+        sender = self.sender().objectName()
+        print(sender)
+
+        index = {
+            "seqAct": 0,
+            "backAct": 1,
+            "huaweiAct": 2
+        }
+        print('索引：', index[sender])
+        self.mainwidget.setCurrentIndex(index[sender])
+
+
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

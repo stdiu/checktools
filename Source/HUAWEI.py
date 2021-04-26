@@ -1,19 +1,12 @@
 from PyQt5.QtWidgets import QWidget, QGridLayout, QPushButton
 import os
-from PyQt5.QtWidgets import QWidget, QApplication,QVBoxLayout,QHBoxLayout,QTabWidget
+from PyQt5.QtWidgets import QWidget, QApplication, QVBoxLayout, QHBoxLayout, QTabWidget
 from PyQt5.uic import loadUi
 from PyQt5.QtGui import QIcon
 
 class HUAWEI(QWidget):
 
     def initUI(self):
-        # mainwidget = QWidget()
-        # gridlayout = QGridLayout()
-        # pb1 = QPushButton('华为界面按钮', self)
-        # gridlayout.addWidget(pb1)
-        # mainwidget.setLayout(gridlayout)
-        # self.setCentralWidget(mainwidget)
-
         self.btn_1 = QPushButton('1', self)
         self.btn_2 = QPushButton('2', self)
         self.btn_3 = QPushButton('3', self)
