@@ -17,10 +17,6 @@ class SEQ_UI(QWidget, SEQ):
         self.setupUi(self)
         print('SEQ实例化')
 
-# class home_UI(QWidget, home):
-#     def __init__(self):
-#         super(home_UI, self).__init__()
-#         print('home实例化')
 
 class test_main(QMainWindow):
     def __init__(self):
@@ -98,12 +94,15 @@ class test_main(QMainWindow):
         self.setCentralWidget(self.mainwidget)
 
         # 实例化分页面
-        self.home = home()
         self.SEQ = SEQ_UI()
+        self.home = home()
+        self.home1 = QWidget()
+        self.home1.setLayout(self.home.layout1)
 
         # 将界面加入布局中
         self.mainwidget.addWidget(self.SEQ)
-        self.mainwidget.addWidget(self.home)
+        self.mainwidget.addWidget(self.home1)
+
 
 
     # *********************************  右键菜单  *********************************** #
