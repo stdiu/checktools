@@ -4,8 +4,7 @@
 # DateTime:2021/4/26 15:08  
 # SoftWare: PyCharm
 
-import sys
-from PyQt5.QtWidgets import QWidget, QMainWindow, QPushButton, QHBoxLayout, QApplication, QLabel, QTabWidget, QVBoxLayout
+from PyQt5.QtWidgets import QLabel, QVBoxLayout
 
 class home(object):
     def __init__(self):
@@ -13,15 +12,6 @@ class home(object):
         self.initUI()
 
     def initUI(self):
-        # self.mainwidget = QWidget()
-        self.layout1 = QHBoxLayout()
-        self.bt1 = QPushButton('这是主页面的按钮1')
-        self.bt2 = QPushButton('这是主页面的按钮2')
-        self.layout1.addWidget(self.bt1)
-        self.layout1.addWidget(self.bt2)
-        print('home主页面')
-
-# if __name__ == '__main__':
-#     app = QApplication(sys.argv)
-#     test_main = home()
-#     sys.exit(app.exec_())
+        self.layout1 = QVBoxLayout()
+        self.lab1 = QLabel(' @ 2021 中国电信广州股份有限公司  无线网络优化中兴')
+        self.layout1.addWidget(self.lab1)

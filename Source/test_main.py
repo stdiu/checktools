@@ -9,6 +9,7 @@ from HUAWEI import HUAWEI
 from ZTE import ZET
 from SEQ import SEQ
 from home_ui import home
+from zte_ui import zte
 
 
 class SEQ_UI(QWidget, SEQ):
@@ -16,6 +17,7 @@ class SEQ_UI(QWidget, SEQ):
         super(SEQ_UI, self).__init__()
         self.setupUi(self)
         print('SEQ实例化')
+
 
 
 class test_main(QMainWindow):
@@ -32,10 +34,10 @@ class test_main(QMainWindow):
 
         # *********************************  子菜单栏  *********************************** #
         # 文件子菜单
-        backAct = QAction(QIcon(r'../Icon/主页.png'), '主页', self)
-        backAct.setStatusTip('返回主页')
-        backAct.setObjectName('backAct')
-        backAct.triggered.connect(self.switch)
+        homeAct = QAction(QIcon(r'../Icon/主页.png'), '主页', self)
+        homeAct.setStatusTip('返回主页')
+        homeAct.setObjectName('homeAct')
+        homeAct.triggered.connect(self.switch)
 
         exitAct = QAction(QIcon(r'../Icon./退出.png'), '退出（&E）', self)
         exitAct.setShortcut('Ctrl+Q')
@@ -46,7 +48,8 @@ class test_main(QMainWindow):
         zteAct = QAction(QIcon(r'../Icon./中兴.png'), '中兴 (&Z)', self)
         # zetAct.setShortcut('Ctrl+Z')
         zteAct.setStatusTip('中兴参数核查')
-        zteAct.triggered.connect( lambda: ZET.Zetcheck(self))
+        zteAct.setObjectName('zteAct')
+        zteAct.triggered.connect(self.switch)
 
         huaweiAct = QAction(QIcon(r'../Icon/华为.png'), '华为 (&W)', self)
         huaweiAct.setStatusTip('华为参数核查')
@@ -63,7 +66,7 @@ class test_main(QMainWindow):
         menubar = self.menuBar()
         # 文件
         fileMenu = menubar.addMenu('文件(&F)')
-        fileMenu.addAction(backAct)
+        fileMenu.addAction(homeAct)
         fileMenu.addAction(exitAct)
 
         # 参数核查
@@ -83,7 +86,7 @@ class test_main(QMainWindow):
 
         # *********************************  工具栏  *********************************** #
         toolbar = self.addToolBar('工具栏')
-        toolbar.addAction(backAct)
+        toolbar.addAction(homeAct)
         toolbar.addAction(zteAct)
         toolbar.addAction(huaweiAct)
         toolbar.addAction(seqAct)
@@ -95,13 +98,19 @@ class test_main(QMainWindow):
 
         # 实例化分页面
         self.SEQ = SEQ_UI()
-        self.home = home()
-        self.home1 = QWidget()
-        self.home1.setLayout(self.home.layout1)
+
+        self.home1 = home()
+        self.home = QWidget()
+        self.home.setLayout(self.home1.layout1)
+
+        self.zte1 = zte()
+        self.zte = QWidget()
+        self.zte.setLayout(self.zte1.layout_zte)
 
         # 将界面加入布局中
+        self.mainwidget.addWidget(self.home)
         self.mainwidget.addWidget(self.SEQ)
-        self.mainwidget.addWidget(self.home1)
+        self.mainwidget.addWidget(self.zte)
 
 
 
@@ -119,9 +128,10 @@ class test_main(QMainWindow):
         print(sender)
 
         index = {
-            "seqAct": 0,
-            "backAct": 1,
-            "huaweiAct": 2
+            "homeAct": 0,
+            "seqAct": 1,
+            "zteAct": 2,
+            "huaweiAct": 3
         }
         print('索引：', index[sender])
         self.mainwidget.setCurrentIndex(index[sender])
