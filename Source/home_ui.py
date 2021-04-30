@@ -13,5 +13,5 @@ class home(object):
 
     def initUI(self):
         self.layout1 = QVBoxLayout()
-        self.lab1 = QLabel(' @ 2021 中国电信广州股份有限公司  无线网络优化中兴')
+        self.lab1 = QLabel(' @ 2021 中国电信广州股份有限公司  无线网络优化中心')
         self.layout1.addWidget(self.lab1)
