@@ -152,5 +152,8 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     main = main()
     # test_main.ui.show()
+    main.setStyleSheet(
+        "QPushButton{ text-align:center;}"
+    )
     main.show()
     sys.exit(app.exec_())
